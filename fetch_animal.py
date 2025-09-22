@@ -46,9 +46,15 @@ def main():
 
     animal_name = input("Enter a name of an animal: ").strip()
     animals_data = fetch_animal(animal_name)
-    if not animals_data:
-        print("No data found.")
-        return
+
+    if animals_data:
+        animals_html = generate_animals_html(animals_data)
+        content_html = f"<ul>{animals_html}</ul>"
+    else:
+        content_html = f"""
+           <h2 style="color:red;">The animal "{html.escape(animal_name)}" doesn't exist.</h2>
+           <p>Please try another animal name.</p>
+           """
 
     animals_html = generate_animals_html(animals_data)
     full_html = f"""
