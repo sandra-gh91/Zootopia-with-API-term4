@@ -5,7 +5,7 @@ import fetch_animal
 
 
 def generate_animals_html(animals_data):
-    """Generate HTML list items for each animal."""
+
     animals_html = ""
     for animal in animals_data:
         name = html.escape(animal.get("name", "N/A"))
@@ -28,7 +28,7 @@ def generate_animals_html(animals_data):
 def main():
 
     animal_name = input("Enter a name of an animal: ").strip()
-    animals_data = fetch_animal(animal_name)
+    animals_data = fetch_animal.fetch_data(animal_name)
 
     if animals_data:
         animals_html = generate_animals_html(animals_data)
